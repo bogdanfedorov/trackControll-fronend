@@ -15,11 +15,11 @@
 </template>
 
 <script lang="ts">
-import {Transport} from '@/types';
+import {ITransport} from '@/types';
 
 export default {
   props: {
-    transports: Array as () => Transport[],
+    transports: Array as () => ITransport[],
     deleteTransport: Function,
     editTransport: Function
   },

@@ -22,8 +22,31 @@ export interface ITransportBase {
 }
 
 
-export interface Transport extends ITransportBase {
+export interface ITransport extends ITransportBase {
     id: number;
 }
 
+
+export enum TrackStatus {
+  PENDING = "PENDING",
+  IN_PROGRESS = "IN_PROGRESS",
+  COMPLETED = "COMPLETED"
+}
+
+export interface ITrackBase {
+    startCity: string;
+    endCity: string;
+    distance: number;
+    departureDate?: string;
+    completionDate?: string;
+    requiredTransportType: ETransportTypes;
+    expectedRevenue: number;
+    cargoTransport: ITransport;
+    cargoTransportId: number | null;
+    status: TrackStatus;
+}
+
+export interface ITrack extends ITrackBase {
+    id: number;
+}
 

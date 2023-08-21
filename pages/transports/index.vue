@@ -19,8 +19,8 @@
 <script lang="ts">
 import TransportList from '@/components/TransportList.vue';
 import {createTransport, deleteTransport, fetchTransports, updateTransport} from '@/api';
-import {ITransportBase, Transport} from "~/types";
-import {TransportBase} from "~/types/emptyObj"; // Ваш асинхронний запит
+import {ITransportBase, ITransport} from "~/types";
+import {TransportBase} from "~/types/emptyObj";
 
 export default {
   components: {
@@ -64,9 +64,10 @@ export default {
       this.creatingNewTransport = false;
       this.newTransport = new TransportBase();
     },
-    async editTransport(transport: Transport) {
+    async editTransport(transport: ITransport, transportId: number ) {
+
       try {
-        await updateTransport(transport.id, transport)
+        await updateTransport(transportId, transport)
       } catch (error) {
         console.error('Error editTransport/updateTransport:', error);
       }
